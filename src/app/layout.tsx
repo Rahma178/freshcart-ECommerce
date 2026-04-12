@@ -42,7 +42,7 @@ export default function RootLayout({
           
         </div>
 
-        <div className="container mx-auto mt-25">
+        <div className="max-w-7xl mx-auto mt-25">
           <WishlistProvider>
              {children}
              <Toaster/>
