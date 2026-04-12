@@ -3,6 +3,8 @@ import Credentials from "next-auth/providers/credentials";
 import {jwtDecode} from 'jwt-decode'
 
 export const nextAuthConfig: NextAuthOptions = {
+   secret: process.env.NEXTAUTH_SECRET,
+   
   providers: [
     Credentials({
       name: "credentials login!!",
@@ -12,11 +14,7 @@ export const nextAuthConfig: NextAuthOptions = {
       },
 
       authorize: async (credentials) => {
-        // credentials = email , password + CSRF token
-        // call automatic w enta bet3mel login
-        // return {id: ""} ===> user login
-        // return null
-        // throw new Error('')
+       
 
         const data = await fetch(
           "https://ecommerce.routemisr.com/api/v1/auth/signin",
