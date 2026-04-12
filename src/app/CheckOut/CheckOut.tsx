@@ -9,7 +9,7 @@ export default function CheckOut({cartId}:{cartId:string}) {
   interface formData {
     city: string,
     details:string,
-    phone:number
+    phone:string
   }
 
   const { register, handleSubmit } = useForm<formData>()
