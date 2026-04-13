@@ -1,15 +1,28 @@
-
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function proxy(req: NextRequest) {
-  const token = await getToken({ req });
-  console.log("token");
-  if (!!token) return NextResponse.next();
+export async function middleware(req: NextRequest) {
+  const cookieName =
+    process.env.NODE_ENV === "production"
+      ? "__Secure-next-auth.session-token"
+      : "next-auth.session-token";
 
-  return NextResponse.redirect(new URL('/login', req.url));
+  const token = await getToken({
+    req,
+    secret: process.env.NEXTAUTH_SECRET,
+    cookieName,
+  });
+
+  if (token) return NextResponse.next();
+
+  return NextResponse.redirect(new URL("/login", req.url));
 }
 
 export const config = {
-  matcher: ["/cart"],
+  matcher: [
+    "/cart/:path*",
+    "/whishList/:path*",
+    "/allorders/:path*",
+    "/CheckOut/:path*",
+  ],
 };
