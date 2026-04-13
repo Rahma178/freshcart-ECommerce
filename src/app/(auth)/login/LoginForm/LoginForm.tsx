@@ -38,20 +38,23 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const inSuccess = await signIn('credentials', {redirect:false , ...data})
-      console.log(inSuccess)
+      const inSuccess = await signIn("credentials", {
+        redirect: false,
+        ...data,
+      });
+      console.log(inSuccess);
 
       // const inSuccess = await loginFn(data);
       if (inSuccess?.ok) {
         toast.success("Login successfuly", {
           position: "top-right",
         });
-        router.push("/");
+        window.location.href = "/";
         reset();
-      }else{
-         toast.error("Incorrect email or password",{
-        position: "top-right",
-      });
+      } else {
+        toast.error("Incorrect email or password", {
+          position: "top-right",
+        });
       }
     } catch (error: any) {
       toast.error(error?.message, {
