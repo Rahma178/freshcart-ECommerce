@@ -34,7 +34,7 @@ export default function RootLayout({
         <>
         {/* Navbar  */}
          <TanStackProviders>
-        <div className="fixed top-0 left-0 w-full z-50 bg-white">
+        <div className="fixed top-0 left-0 w-full z-50 bg-white max-w-screen-xl mx-auto">
           
           <WrapperCom>
             <NavigationMenuDemo/>
@@ -42,7 +42,7 @@ export default function RootLayout({
           
         </div>
 
-        <div className="container mx-auto mt-25">
+        <div className="container mx-auto px-4 mt-25 max-w-screen-xl">
           <WishlistProvider>
              {children}
              <Toaster/>

@@ -10,7 +10,7 @@ export default async function Categories() {
       </h2>
 
       {/* Parent flex container */}
-      <div className="flex flex-wrap -mx-2">
+      <div className="flex flex-wrap ">
         {data.map((cat) => (
           <div key={cat._id} className="w-1/6 px-2 mb-4 flex flex-col items-center">
             <CatItem cat={cat} />
