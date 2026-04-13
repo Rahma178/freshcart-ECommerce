@@ -1,7 +1,8 @@
+// src/middleware.ts
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(req: NextRequest) {
+async function proxy(req: NextRequest) {
   const cookieName =
     process.env.NODE_ENV === "production"
       ? "__Secure-next-auth.session-token"
@@ -14,9 +15,11 @@ export async function middleware(req: NextRequest) {
   });
 
   if (token) return NextResponse.next();
-
   return NextResponse.redirect(new URL("/login", req.url));
 }
+
+// الـ export لازم اسمه middleware
+export { proxy as middleware };
 
 export const config = {
   matcher: [
