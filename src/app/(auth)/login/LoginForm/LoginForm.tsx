@@ -39,7 +39,7 @@ export default function LoginForm() {
 
     try {
       const inSuccess = await signIn('credentials', {redirect:false , ...data})
-      // console.log(inSuccess)
+      console.log(inSuccess)
 
       // const inSuccess = await loginFn(data);
       if (inSuccess?.ok) {
